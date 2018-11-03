@@ -1,19 +1,22 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 
 const Button = styled.button`
+  font-size: 30px;
   color: red;
 `;
 
 const BlueButton = styled(Button)`
-  color: blue;
+  color: ${props => props.theme.color};
 `;
 
 const Hello = () => (
-  <React.Fragment>
-    <Button>I am red</Button>
-    <BlueButton>I am blue</BlueButton>
-  </React.Fragment>
+  <ThemeProvider theme={{ color: 'blue' }}>
+    <React.Fragment>
+      <Button>I am red</Button>
+      <BlueButton>I am blue</BlueButton>
+    </React.Fragment>
+  </ThemeProvider>
 );
 
 export default Hello;
